@@ -1,0 +1,102 @@
+:root {
+    --accent: #ff4757;
+    --bg: #0b0b14;
+}
+
+body {
+    margin: 0; font-family: -apple-system, system-ui, sans-serif;
+    background: var(--bg); color: white; -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+}
+
+/* 1. Мигающий баннер */
+@keyframes neonBanner {
+    0% { background: #ff4757; box-shadow: 0 0 10px #ff4757; }
+    50% { background: #ff6b81; box-shadow: 0 0 20px #ff6b81; }
+    100% { background: #ff4757; box-shadow: 0 0 10px #ff4757; }
+}
+.top-banner {
+    padding: 12px; text-align: center; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 3px;
+    animation: neonBanner 1s infinite ease-in-out; font-size: 1.1rem;
+}
+
+/* 2. Навигация */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 20px; background: rgba(0,0,0,0.8); backdrop-filter: blur(15px);
+    position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.logo { font-weight: 800; font-size: 1.2rem; }
+.logo span { color: var(--accent); }
+.btn-auth-circle {
+    background: var(--accent); border: none; color: white;
+    width: 42px; height: 42px; border-radius: 50%; font-size: 1.1rem;
+}
+
+/* 3. Бегущая строка DINAXU */
+.marquee {
+    width: 100%; overflow: hidden; background: rgba(255, 255, 255, 0.03);
+    padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.marquee-content {
+    display: inline-block; white-space: nowrap;
+    font-weight: bold; color: var(--accent); font-size: 1rem;
+    animation: scroll 12s linear infinite;
+}
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* 4. Контент */
+header { text-align: center; padding: 30px 20px; }
+header h1 { font-size: 2.4rem; margin: 0; }
+header p { opacity: 0.6; font-size: 1rem; }
+
+.mobile-container { padding: 0 15px 40px; }
+.m-card {
+    position: relative; border-radius: 20px; overflow: hidden;
+    margin-bottom: 20px; height: 230px; border: 1px solid rgba(255,255,255,0.15);
+}
+.m-card img { width: 100%; height: 100%; object-fit: cover; }
+.m-card-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    font-weight: bold; font-size: 1.2rem;
+}
+
+/* 5. Модальные окна */
+.modal-mobile, .modal-auth-mobile {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95); z-index: 2000;
+    flex-direction: column; align-items: center; justify-content: center; padding: 20px;
+}
+.modal-content-mobile { width: 100%; max-width: 400px; text-align: center; }
+.modal-content-mobile img { width: 100%; border-radius: 20px; margin-bottom: 15px; }
+.btn-close-m {
+    margin-top: 25px; padding: 12px 40px; border-radius: 50px;
+    background: white; color: black; border: none; font-weight: bold;
+}
+
+.auth-card-mobile {
+    background: #151525; width: 90%; padding: 35px 25px; border-radius: 30px;
+    text-align: center; border: 1px solid rgba(255,255,255,0.1);
+}
+.auth-card-mobile input {
+    width: 100%; padding: 16px; margin-bottom: 12px;
+    background: #20203a; border: 1px solid #333; border-radius: 14px; color: white;
+}
+.btn-submit {
+    width: 100%; padding: 16px; background: var(--accent);
+    border: none; border-radius: 14px; color: white; font-weight: bold;
+}
+.btn-text { background: none; border: none; color: #777; margin-top: 15px; }
+
+/* 6. Уведомление */
+.toast {
+    position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%);
+    background: #27ae60; padding: 15px 40px; border-radius: 50px; transition: 0.5s;
+}
+.toast.show { bottom: 40px; }
+  
