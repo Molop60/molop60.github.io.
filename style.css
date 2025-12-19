@@ -1,0 +1,88 @@
+:root {
+    --accent: #ff4757;
+    --bg: #0f0f1a;
+}
+
+body {
+    margin: 0; font-family: -apple-system, sans-serif;
+    background: var(--bg); color: white;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Мигающий баннер */
+@keyframes neon {
+    0% { background: #ff4757; box-shadow: 0 0 10px #ff4757; }
+    50% { background: #ff6b81; box-shadow: 0 0 25px #ff4757; }
+    100% { background: #ff4757; box-shadow: 0 0 10px #ff4757; }
+}
+.top-banner {
+    padding: 10px; text-align: center; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 3px;
+    animation: neon 1s infinite; font-size: 0.9rem;
+}
+
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 20px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+    position: sticky; top: 0; z-index: 100;
+}
+
+.logo { font-weight: 800; font-size: 1.2rem; }
+.logo span { color: var(--accent); }
+
+.btn-auth-circle {
+    background: var(--accent); border: none; color: white;
+    width: 40px; height: 40px; border-radius: 50%; font-size: 1rem;
+}
+
+header { text-align: center; padding: 40px 20px; }
+header h1 { font-size: 2.2rem; margin: 0; }
+header p { opacity: 0.6; }
+
+/* Мобильные карточки */
+.mobile-container { padding: 0 15px 50px; }
+.m-card {
+    position: relative; border-radius: 20px; overflow: hidden;
+    margin-bottom: 20px; height: 200px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.m-card img { width: 100%; height: 100%; object-fit: cover; }
+.m-card-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    font-weight: bold; font-size: 1.2rem;
+}
+
+/* Модалка на весь экран телефона */
+.modal-mobile, .modal-auth-mobile {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95); z-index: 2000;
+    flex-direction: column; align-items: center; justify-content: center;
+}
+
+.modal-content-mobile { width: 90%; text-align: center; }
+.modal-content-mobile img { width: 100%; border-radius: 15px; margin-bottom: 20px; }
+
+.auth-card-mobile {
+    background: #1a1a2e; width: 85%; padding: 30px; border-radius: 25px;
+    text-align: center;
+}
+.auth-card-mobile input {
+    width: 100%; padding: 15px; margin-bottom: 10px;
+    background: #252545; border: none; border-radius: 12px; color: white;
+}
+.btn-submit {
+    width: 100%; padding: 15px; background: var(--accent);
+    border: none; border-radius: 12px; color: white; font-weight: bold;
+}
+.btn-text { background: none; border: none; color: #888; margin-top: 15px; }
+.btn-close-m {
+    margin-top: 20px; padding: 10px 30px; border-radius: 50px;
+    background: white; color: black; border: none; font-weight: bold;
+}
+
+.toast {
+    position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%);
+    background: #27ae60; padding: 15px 30px; border-radius: 50px; transition: 0.5s;
+}
+.toast.show { bottom: 30px; }
