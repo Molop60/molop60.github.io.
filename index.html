@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kaban Mobile | DINAXU</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="top-banner">Valik gay</div>
+
+    <nav>
+        <div class="logo">KABAN<span>WORLD</span></div>
+        <button onclick="toggleAuthModal()" class="btn-auth-circle"><i class="fa-solid fa-user-plus"></i></button>
+    </nav>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            DINAXU🥰 DINAXU🥰 DINAXU🥰 DINAXU🥰 DINAXU🥰 DINAXU🥰 DINAXU🥰 DINAXU🥰 DINAXU🥰 DINAXU🥰
+        </div>
+    </div>
+
+    <header>
+        <h1>Мир Кабанов</h1>
+        <p>Лучшие породы в твоем смартфоне</p>
+    </header>
+
+    <main class="mobile-container">
+        <div class="m-card" onclick="openModal('https://images.unsplash.com/photo-1613524672646-61266e857474?q=80&w=1200', 'Дикий кабан', 'Мощный лесной зверь. Обитает в лесах Евразии.')">
+            <img src="https://images.unsplash.com/photo-1613524672646-61266e857474?q=80&w=600" alt="Wild Boar">
+            <div class="m-card-label">Дикий лесной кабан</div>
+        </div>
+
+        <div class="m-card" onclick="openModal('https://live.staticflickr.com/3183/2995393665_f4d9b62677_b.jpg', 'Мангалица', 'Венгерская порода. Единственная свинья с кудрявой шерстью.')">
+            <img src="https://live.staticflickr.com/3183/2995393665_f4d9b62677_z.jpg" alt="Mangalica">
+            <div class="m-card-label">Кудрявая Мангалица</div>
+        </div>
+
+        <div class="m-card" onclick="openModal('https://images.pexels.com/photos/1054394/pexels-photo-1054394.jpeg?auto=compress&cs=tinysrgb&w=1200', 'Бородавочник', 'Африканский дикий кабан с характерными наростами на морде.')">
+            <img src="https://images.pexels.com/photos/1054394/pexels-photo-1054394.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Warthog">
+            <div class="m-card-label">Бородавочник</div>
+        </div>
+
+        <div class="m-card" onclick="openModal('https://upload.wikimedia.org/wikipedia/commons/e/e6/Babyrousa_celebensis_head.jpg', 'Бабирусса', 'Уникальный кабан из Индонезии с клыками, растущими вверх.')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Babyrousa_celebensis_head.jpg/640px-Babyrousa_celebensis_head.jpg" alt="Babirusa">
+            <div class="m-card-label">Индонезийская Бабирусса</div>
+        </div>
+    </main>
+
+    <div id="imageModal" class="modal-mobile" onclick="closeModal()">
+        <div class="modal-content-mobile">
+            <img id="modalImg" src="">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDesc"></p>
+            <button class="btn-close-m">Закрыть</button>
+        </div>
+    </div>
+
+    <div id="authModal" class="modal-auth-mobile">
+        <div class="auth-card-mobile">
+            <h2>Регистрация</h2>
+            <form onsubmit="handleAuth(event)">
+                <input type="text" placeholder="Логин" required>
+                <input type="password" placeholder="Пароль" required>
+                <button type="submit" class="btn-submit">Войти</button>
+            </form>
+            <button onclick="toggleAuthModal()" class="btn-text">Отмена</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Успешно!</div>
+
+    <script>
+        function openModal(src, title, desc) {
+            document.getElementById('imageModal').style.display = 'flex';
+            document.getElementById('modalImg').src = src;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+        }
+        function closeModal() { document.getElementById('imageModal').style.display = 'none'; }
+        function toggleAuthModal() {
+            const m = document.getElementById('authModal');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+        function handleAuth(e) {
+            e.preventDefault();
+            toggleAuthModal();
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+    </script>
+</body>
+</html>
