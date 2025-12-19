@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kaban Mobile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="top-banner">Valik gay</div>
+
+    <nav>
+        <div class="logo">KABAN<span>WORLD</span></div>
+        <button onclick="toggleAuthModal()" class="btn-auth-circle"><i class="fa-solid fa-user-plus"></i></button>
+    </nav>
+
+    <header>
+        <h1>Мир Кабанов</h1>
+        <p>Энциклопедия в твоем кармане</p>
+    </header>
+
+    <main class="mobile-container">
+        <div class="m-card" onclick="openModal('https://images.pexels.com/photos/632431/pexels-photo-632431.jpeg?auto=compress&cs=tinysrgb&w=1200', 'Дикий кабан', 'Опасный и мощный лесной зверь.')">
+            <img src="https://images.pexels.com/photos/632431/pexels-photo-632431.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Wild Boar">
+            <div class="m-card-label">Дикий кабан</div>
+        </div>
+
+        <div class="m-card" onclick="openModal('https://upload.wikimedia.org/wikipedia/commons/e/e0/Mangalica_v_obore.jpg', 'Мангалица', 'Венгерская свинья с овечьей шерстью.')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Mangalica_v_obore.jpg/640px-Mangalica_v_obore.jpg" alt="Mangalica">
+            <div class="m-card-label">Мангалица</div>
+        </div>
+
+        <div class="m-card" onclick="openModal('https://images.pexels.com/photos/1054394/pexels-photo-1054394.jpeg?auto=compress&cs=tinysrgb&w=1200', 'Бородавочник', 'Знаменитый Пумба из саванны.')">
+            <img src="https://images.pexels.com/photos/1054394/pexels-photo-1054394.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Warthog">
+            <div class="m-card-label">Бородавочник</div>
+        </div>
+    </main>
+
+    <div id="imageModal" class="modal-mobile" onclick="closeModal()">
+        <div class="modal-content-mobile">
+            <img id="modalImg" src="">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDesc"></p>
+            <button class="btn-close-m">Закрыть</button>
+        </div>
+    </div>
+
+    <div id="authModal" class="modal-auth-mobile">
+        <div class="auth-card-mobile">
+            <h2>Регистрация</h2>
+            <form onsubmit="handleAuth(event)">
+                <input type="text" placeholder="Логин" required>
+                <input type="password" placeholder="Пароль" required>
+                <button type="submit" class="btn-submit">Войти</button>
+            </form>
+            <button onclick="toggleAuthModal()" class="btn-text">Отмена</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Успешно!</div>
+
+    <script>
+        function openModal(src, title, desc) {
+            document.getElementById('imageModal').style.display = 'flex';
+            document.getElementById('modalImg').src = src;
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+        }
+        function closeModal() { document.getElementById('imageModal').style.display = 'none'; }
+        function toggleAuthModal() {
+            const m = document.getElementById('authModal');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+        function handleAuth(e) {
+            e.preventDefault();
+            toggleAuthModal();
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+    </script>
+</body>
+</html>
